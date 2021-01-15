@@ -28,6 +28,7 @@ class App extends Component {
               ...snapshot.data()
             }
           });
+          console.log('%c KILLER ', 'background: #029640; color: #fff', this.state);
         });
       }
 
