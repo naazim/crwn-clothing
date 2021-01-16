@@ -1,5 +1,4 @@
 body {
-  font-family: "Open Sans Condensed", sans-serif;
   padding: 20px 80px;
 }
 
@@ -10,4 +9,5 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: "Open Sans Condensed", sans-serif;
 }
