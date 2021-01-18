@@ -36,7 +36,6 @@ class SignIn extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="sign-in">
         <h2>I already have an account</h2>
