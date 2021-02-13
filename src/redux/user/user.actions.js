@@ -5,6 +5,21 @@ export const setCurrentUser = user => ({
   payload: user
 });
 
+export const signUpStart = userCredentials => ({
+  type: UserActionTypes.SIGN_UP_START,
+  payload: userCredentials
+});
+
+export const signUpSuccess = ({ user, additionalData }) => ({
+  type: UserActionTypes.SIGN_UP_SUCCESS,
+  payload: { user, additionalData }
+});
+
+export const signupFailure = error => ({
+  type: UserActionTypes.SIGN_UP_FAILURE,
+  payload: error
+});
+
 export const googleSignInStart = () => ({
   type: UserActionTypes.GOOGLE_SIGN_IN_START
 });
