@@ -1,6 +1,7 @@
 {
   "name": "crwn-clothing-server",
   "version": "1.0.0",
+  "license": "MIT",
   "engines": {
     "node": "12.18.2",
     "npm": "7.5.6"
