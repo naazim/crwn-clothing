@@ -1,67 +1,74 @@
-import { useState } from "react";
-import { connect } from "react-redux";
-import FormInput from "../form-input/form-input.component";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
+import FormInput from '../form-input/form-input.component';
+import CustomButton from '../custom-button/custom-button.component';
+
 import {
-  emailSignInStart,
-  googleSignInStart
-} from "../../redux/user/user.actions";
-import CustomButton from "../custom-button/custom-button.component";
-import "./sign-in.styles.scss";
+  googleSignInStart,
+  emailSignInStart
+} from '../../redux/user/user.actions';
+
+import {
+  SignInContainer,
+  SignInTitle,
+  ButtonsBarContainer
+} from './sign-in.styles';
 
 const SignIn = ({ emailSignInStart, googleSignInStart }) => {
-  const [userCredentials, setUserCredentials] = useState({
-    email: "",
-    password: ""
+  const [userCredentials, setCredentials] = useState({
+    email: '',
+    password: ''
   });
 
   const { email, password } = userCredentials;
 
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const handleSubmit = async event => {
+    event.preventDefault();
+
     emailSignInStart(email, password);
   };
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setUserCredentials({
-      ...userCredentials,
-      [name]: value
-    });
+  const handleChange = event => {
+    const { value, name } = event.target;
+
+    setCredentials({ ...userCredentials, [name]: value });
   };
 
   return (
-    <div className="sign-in">
-      <h2>I already have an account</h2>
-      <span>Sign in with your email & password</span>
+    <SignInContainer>
+      <SignInTitle>I already have an account</SignInTitle>
+      <span>Sign in with your email and password</span>
 
       <form onSubmit={handleSubmit}>
         <FormInput
-          label="email"
-          name="email"
-          type="email"
-          value={email}
+          name='email'
+          type='email'
           handleChange={handleChange}
+          value={email}
+          label='email'
+          required
         />
         <FormInput
-          label="password"
-          name="password"
-          type="password"
+          name='password'
+          type='password'
           value={password}
           handleChange={handleChange}
+          label='password'
+          required
         />
-
-        <div className="buttons">
-          <CustomButton type="submit">Submit Form</CustomButton>
+        <ButtonsBarContainer>
+          <CustomButton type='submit'> Sign in </CustomButton>
           <CustomButton
-            type="button"
+            type='button'
             onClick={googleSignInStart}
             isGoogleSignIn
           >
             Sign in with Google
           </CustomButton>
-        </div>
+        </ButtonsBarContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
